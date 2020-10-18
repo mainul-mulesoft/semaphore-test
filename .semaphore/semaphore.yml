@@ -1,0 +1,24 @@
+version: v1.0
+name: Java
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Maven Clean and Build
+    task:
+      jobs:
+        - name: Build
+          commands:
+            - checkout
+            - sem-version java 1.8
+            - mvn clean package --file pom.xml
+    dependencies: []
+  - name: Maven deploy
+    dependencies:
+      - Maven Clean and Build
+    task:
+      jobs:
+        - name: Deploy
+          commands:
+            - mvn clean deploy -DmuleDeploy

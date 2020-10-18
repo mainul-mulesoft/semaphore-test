@@ -26,12 +26,26 @@
 				<version>3.0.0</version>
 			</plugin>
 			<plugin>
-				<groupId>org.mule.tools.maven</groupId>
-				<artifactId>mule-maven-plugin</artifactId>
-				<version>${mule.maven.plugin.version}</version>
-				<extensions>true</extensions>
-				<configuration>
-				</configuration>
+			  <groupId>org.mule.tools.maven</groupId>
+			  <artifactId>mule-maven-plugin</artifactId>
+			  <version>3.3.2</version>
+			  <extensions>true</extensions>
+			  <configuration>
+			    <cloudHubDeployment>
+			      <uri>https://anypoint.mulesoft.com</uri>
+			      <muleVersion>4.3.0</muleVersion>
+			      <username>mainul_apac</username>
+			      <password>Mainul674</password>
+			      <applicationName>semaphore-test</applicationName>
+			      <environment>Sandbox</environment>
+			      <region>ap-southeast-2</region>
+			      <workers>1</workers>
+			      <workerType>MICRO</workerType>
+			      <properties>
+			        <mule.env>dev</mule.env>
+			      </properties>
+			    </cloudHubDeployment>
+			  </configuration>
 			</plugin>
 		</plugins>
 	</build>

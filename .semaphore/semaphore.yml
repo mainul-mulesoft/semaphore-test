@@ -8,17 +8,10 @@ blocks:
   - name: Maven Clean and Build
     task:
       jobs:
-        - name: Build
+        - name: Build & Deploy
           commands:
             - checkout
             - sem-version java 1.8
-            - mvn clean package --file pom.xml
+            - mvn clean package
+            - mvn deploy -DmuleDeploy
     dependencies: []
-  - name: Maven deploy
-    dependencies:
-      - Maven Clean and Build
-    task:
-      jobs:
-        - name: Deploy
-          commands:
-            - mvn clean deploy -DmuleDeploy

@@ -1,0 +1,19 @@
+version: v1.0
+name: First pipeline
+agent:
+  machine:
+    type: e1-standard-2
+    os_image: ubuntu1804
+blocks:
+  - name: Maven build and delpoy
+    task:
+      prologue:
+        commands:
+          - checkout
+      jobs:
+        - name: Maven build and deploy
+          commands:
+            - checkout
+            - sem-version java 1.8
+            - mvn clean package
+            - mvn deploy -DmuleDeploy

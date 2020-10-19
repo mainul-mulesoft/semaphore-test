@@ -16,7 +16,7 @@ blocks:
             - checkout
             - sem-version java 1.8
             - mvn clean package
-            - 'mvn deploy -DmuleDeploy -Dmule.env=${env}'
+            - 'mvn deploy -DmuleDeploy -Dmule.env=${env} -Danypoint.password=${mule.password}'
       secrets:
         - name: anypointPassword
       env_vars:

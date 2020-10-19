@@ -35,14 +35,14 @@
 			      <uri>https://anypoint.mulesoft.com</uri>
 			      <muleVersion>4.3.0</muleVersion>
 			      <username>mainul_apac</username>
-			      <password>Mainul674</password>
+			      <password>${anypoint.password}</password>
 			      <applicationName>semaphore-test</applicationName>
 			      <environment>Sandbox</environment>
 			      <region>ap-southeast-2</region>
 			      <workers>1</workers>
 			      <workerType>MICRO</workerType>
 			      <properties>
-			        <mule.env>dev</mule.env>
+			        <mule.env>${mule.env}</mule.env>
 			      </properties>
 			    </cloudHubDeployment>
 			  </configuration>

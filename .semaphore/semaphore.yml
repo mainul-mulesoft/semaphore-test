@@ -42,7 +42,7 @@ blocks:
         - name: env
           value: prod
         - name: devenv
-          value: Production
+          value: Sandbox
       jobs:
         - name: Maven build and deploy
           commands:

@@ -25,6 +25,7 @@ blocks:
             - checkout
             - sem-version java 1.8
             - echo "${password}"
+            - echo "${devenv}"
             - mvn clean package
             - 'mvn deploy -DmuleDeploy -Dmule.env=${env} -Danypoint.password=$password -Danypoint.env=${devenv}'
 

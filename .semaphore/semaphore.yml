@@ -10,6 +10,11 @@ blocks:
       prologue:
         commands:
           - checkout
+      secrets:
+        - name: anypointPassword
+      env_vars:
+        - name: env
+          value: Test
       jobs:
         - name: Maven build and deploy
           commands:
@@ -18,8 +23,3 @@ blocks:
             - echo "${password}"
             - mvn clean package
             - 'mvn deploy -DmuleDeploy -Dmule.env=${env} -Danypoint.password=$password'
-      secrets:
-        - name: anypointPassword
-      env_vars:
-        - name: env
-          value: Test

@@ -5,7 +5,9 @@ agent:
     type: e1-standard-2
     os_image: ubuntu1804
 blocks:
-  - name: Maven build and delpoy
+  - name: Maven build and delpoy in Dev 
+    run: 
+      when: "branch = 'develop'"
     task:
       prologue:
         commands:
@@ -14,7 +16,9 @@ blocks:
         - name: anypointPassword
       env_vars:
         - name: env
-          value: Test
+          value: dev
+          name: anypoint.env
+          value: Sandbox
       jobs:
         - name: Maven build and deploy
           commands:
@@ -22,4 +26,27 @@ blocks:
             - sem-version java 1.8
             - echo "${password}"
             - mvn clean package
-            - 'mvn deploy -DmuleDeploy -Dmule.env=${env} -Danypoint.password=$password'
+            - 'mvn deploy -DmuleDeploy -Dmule.env=${env} -Danypoint.password=$password -Danypoint.env=${anypoint.env}'
+
+  - name: Maven build and delpoy in Prod 
+    run: 
+      when: "branch = 'master'"
+    task:
+      prologue:
+        commands:
+          - checkout
+      secrets:
+        - name: anypointPassword
+      env_vars:
+        - name: env
+          value: prod
+          name: anypoint.env
+          value: Non-Prod
+      jobs:
+        - name: Maven build and deploy
+          commands:
+            - checkout
+            - sem-version java 1.8
+            - echo "${password}"
+            - mvn clean package
+            - 'mvn deploy -DmuleDeploy -Dmule.env=${env} -Danypoint.password=$password -Danypoint.env=${anypoint.env}'

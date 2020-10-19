@@ -37,7 +37,7 @@
 			      <username>mainul_apac</username>
 			      <password>${anypoint.password}</password>
 			      <applicationName>semaphore-test</applicationName>
-			      <environment>Sandbox</environment>
+			      <environment>${anypoint.env}</environment>
 			      <region>ap-southeast-2</region>
 			      <workers>1</workers>
 			      <workerType>MICRO</workerType>
